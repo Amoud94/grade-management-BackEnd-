@@ -1,0 +1,27 @@
+{
+    "isProduction": false,
+    "serverPort": 9990,
+    "clientPort": 8081,
+	"webServer": "com.httpServer.frontOffice",
+	"standardVerticles": [
+      "com.services.Modules",
+      "com.services.Enseignants",
+      "com.services.Departements",
+      "com.services.Etudiants",
+      "com.services.Notes",
+      "com.services.Elements",
+      "com.services.Filieres",
+      "com.services.Note_distributeur",
+      "com.services.message"
+    ],
+    "jwt": {
+      "secretKey": "MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC9YmS97LHVLK4u\nFp+uHDH0jglVBBqGBX4t3Qrgm3SPMJ5o7cSi+a2/w4KIMAjGGqvZkIy4uZ5VOKwz\nF5Ny4ZZItk6Kgaswj1iyoxAXhpCzxiyyNdbXMk2e8J9t830PzN8m22hiClB93xtH\nS0wIwzXDVCjAyTufuxy1EgJMndZts8rhlNPJyHrOvWui79lT2t+Bk5I9sg3UhPmR\nLBFQWOU6P3355aIpx0o4xGq9ZAlHisAdf5K/G7wbqEjZFt30zewErfYUf38tZ9OQ\nBQRHp/K3wfBdcpDw4tD/dTFz4d20GE9/d1+S2U1st2AKhlP4CLHyCY9FhMDViZ+E\noXTquLYfAgMBAAECggEAVURuvUBLlQJH7gJLpLWXHFezBe8SDhN9CyNBmX0Ejs/C\nEtYyuXoW64cYRz7xRFiP1SYK5cTU7+PTTDGqNogxBM3oMN5O+E8iDVPzk9QHZJmu\nWBJ7h2pjnlMSRQvi2/FO64zPw4yHTxTbkE7rjepuU2KZ8qrnyHQTaccQ9/P8rmkE\nwE/YOBjEuDly/zOuMIEfwuvX+UvgoIlIo/tGQRV/bs+gX1ubcKR4ghur4P4aO88h\nZI7gog3z6fnpXW9i/WfFccgDq8eLkeEiXGPqdX20QYNzur6qCK9OJz3HZCyvn5Vx\n/3rsxKxWS1KvMfBNslAOtbjw/1nsxhdM9vkhIakq8QKBgQDwSYbptl91uahdOYaP\nrl+0TjT5kYpmoVVgjyKiDBXMFv+wfjKIvGzJJccpjdmn1fvDHhzkOYcsze3rpMRd\nZxGAYCMuA0pgXRbEGjm9CLXv8qDx0vIRS+VB3EjxYjVi6gxZq6IGCavyduLvb6ch\niHchtmWBGpJY8geKCfF5feUneQKBgQDJxL0g3VwEKasw4lj5PIsWNF7ka61FfQBW\npv4cS7v1MNOWI8T7bHgoOlU8tANdPI3ksvc6nL1qNvj725HksVpJ4Uc1qb7Ue8oz\nM0g640qp1xCEQtXlwcP4SN7JSZ++wzxMIJtvl+8Y56UZgIt6SMoYbeUMiva+IIio\n5dwvWiusVwKBgFHS5/M8HEOthizAwxa4bXSr0RRPQE70j2tDMqr17JJEHqvOPY0c\nhPr2N1zqJf0mPAZUgcgh4usZ8PP2drvLtkT999zaWAB6kp8SwyihB7t+5tmSWMYV\nDyufROOV6tIVG0GJ1bGyp2/4lgys+7/Kha7gOq59Curo+DJEcotJmLgZAoGAbvcn\neMqlD5kHEHR7sF8Os2CMC534hm3v4LgoqtEwBvIae8kiTZBjKOSj+iWacA2cj/mp\nJHANcDvZhVJFk3vChz1BV48KZ3vJQY1jnRdh+bRQ3hyP3LNLHuKcvCEknNps8AVC\n1wW9Nno3f6YFj3Q2yWavAM3wU7I61oDMLrKtsDMCgYBNknCkii3kB/ajrkwHB9cg\no81U01XA5cwulZ3oTeCVSkgcoYNXCWHDAbqmDwrXiT3am7yoLd/qNFLb1ODq6Tfs\nFiw6igY0pgRo2PH5X4WsbuRFurE6wR1AAMVLPoJmeBLrzfXtdvfH60h5nkRLqRge\nDJspX/2wOvnME0F6nUd2nw==",
+      "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvWJkveyx1SyuLhafrhwx\n9I4JVQQahgV+Ld0K4Jt0jzCeaO3Eovmtv8OCiDAIxhqr2ZCMuLmeVTisMxeTcuGW\nSLZOioGrMI9YsqMQF4aQs8YssjXW1zJNnvCfbfN9D8zfJttoYgpQfd8bR0tMCMM1\nw1QowMk7n7sctRICTJ3WbbPK4ZTTych6zr1rou/ZU9rfgZOSPbIN1IT5kSwRUFjl\nOj99+eWiKcdKOMRqvWQJR4rAHX+Svxu8G6hI2Rbd9M3sBK32FH9/LWfTkAUER6fy\nt8HwXXKQ8OLQ/3Uxc+HdtBhPf3dfktlNbLdgCoZT+Aix8gmPRYTA1YmfhKF06ri2\nHwIDAQAB"
+    },
+	"workerVerticles": [],
+    "db":{
+        "host": "localhost",
+        "port": 27017,
+        "db_name": "GestionControle"
+    }
+}

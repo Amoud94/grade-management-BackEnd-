@@ -1,0 +1,6 @@
+main class = io.vertx.core.Launcher
+
+VM options = -Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.Log4jLogDelegateFactory  -Dlog4j.configurationFile=-Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.Log4jLogDelegateFactory  -Dlog4j.configurationFile=C:\Work\review\src\log4j.properties
+
+Program arguments = run com.main -conf config.json
+

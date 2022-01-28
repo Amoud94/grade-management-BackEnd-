@@ -1,0 +1,8 @@
+web/node_modules/
+.gradle/
+.idea/
+build/
+web/dist/
+node_modules/
+/target/
+file-uploads/

@@ -1,0 +1,1807 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Sample API",
+		"version": "0.1.0"
+	},
+	"paths": {
+		"/*": {
+			"get": {
+				"description": "all requests",
+				"operationId": "GET",
+				"responses": {
+					"200": {
+						"description": "ok"
+					}
+				}
+			},
+			"post": {
+				"summary": "all requests",
+				"operationId": "POST",
+				"requestBody": {
+					"content": {
+						"application/json": {
+						},
+						"multipart/form-data": {
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+		},
+
+		"/login" : {
+			"post": {
+				"summary": "all requests",
+				"operationId": "LOGIN",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"username": {
+										"type": "string"
+									},
+									"login": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"username",
+									"login"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+		},
+
+		"/private/*": {
+			"get": {
+				"description": "all requests",
+				"operationId": "privateGET",
+				"responses": {
+					"200": {
+						"description": "ok"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			},
+			"post": {
+				"summary": "all requests",
+				"operationId": "privatePOST",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EmptyObj"
+							}
+						},
+						"multipart/form-data": {
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			},
+			"delete": {
+				"summary": "all request",
+				"operationId": "privateDELETE",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Deleted with success !!"
+					},
+					"404": {
+						"description": "Id not found !!"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			},
+			"put": {
+				"summary": "all request",
+				"operationId": "privatePUT",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Updated with success !!"
+					},
+					"404": {
+						"description": "Id not found !!"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			}
+		},
+		"/private/AUTHENTICATION": {
+			"post": {
+				"summary": "check user authenticating",
+				"operationId": "authenticate",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EmptyObj"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+		},
+
+
+
+		"/private/CHEFS_DEPARTEMENT": {
+			"get": {
+				"description": "les chefs du departement",
+				"operationId": "Lister_Chef_Departement",
+				"responses": {
+					"200": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/CHEFS_FILIERE": {
+			"get": {
+				"description": "les chefs des filieres",
+				"operationId": "Lister_Chef_Filiere",
+				"responses": {
+					"200": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+
+		"/private/LISTER_ENSEIGNANTS/{page}/{limit}": {
+			"get": {
+				"description": "all modules",
+				"operationId": "Lister_Enseignants",
+				"parameters": [
+					{
+						"name": "page",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "number"
+						}
+					},
+					{
+						"name": "limit",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "number"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/AJOUTER_ENSEIGNANT": {
+			"post": {
+				"summary": "ADD a enseignant!",
+				"operationId": "Ajouter_Enseignant",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"prenom": {
+										"type": "string"
+									},
+									"telephone": {
+										"type": "string"
+									},
+									"emailPersonnel": {
+										"type": "string"
+									},
+									"emailInstitutionnel": {
+										"type": "string"
+									},
+									"cin": {
+										"type": "string"
+									},
+									"position": {
+										"type": "string"
+									},
+									"permissions": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								},
+								"required": [
+									"nom",
+									"prenom",
+									"telephone",
+									"cin",
+									"position",
+									"permissions",
+									"emailPersonnel",
+									"emailInstitutionnel"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					},
+					"405": {
+						"description": "Method Not Allowed",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					}
+				}
+			}
+		},
+		"/private/MODIFIER_ENSEIGNANT/{id}": {
+			"put": {
+				"summary": "Up to date !",
+				"operationId": "Modifier_Enseignant",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"prenom": {
+										"type": "string"
+									},
+									"telephone": {
+										"type": "string"
+									},
+									"emailPersonnel": {
+										"type": "string"
+									},
+									"emailInstitutionnel": {
+										"type": "string"
+									},
+									"position": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "updated.",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					},
+					"405": {
+						"description": "Method Not Allowed",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					}
+				}
+			}
+		},
+		"/private/SUPPRIMER_ENSEIGNANT/{id}": {
+			"delete": {
+				"summary": "Delete module !",
+				"operationId": "Supprimer_Enseignant",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Deleted with success !!"
+					},
+					"404": {
+						"description": "Id not found !!"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			}
+		},
+
+		"/private/LISTER_ETUDIANTS": {
+			"get": {
+				"description": "all etudiants",
+				"operationId": "Lister_Etudiants",
+				"responses": {
+					"200": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/AJOUTER_ETUDIANT": {
+			"post": {
+				"summary": "ADD a enseignant!",
+				"operationId": "Ajouter_Etudiant",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"prenom": {
+										"type": "string"
+									},
+									"filiere": {
+										"type": "string"
+									},
+									"lieuNaissance": {
+										"type": "string"
+									},
+									"dateNaissance": {
+										"type": "string"
+									},
+									"sexe": {
+										"type": "string"
+									},
+									"telephone": {
+										"type": "string"
+									},
+									"cin": {
+										"type": "string"
+									},
+									"emailPersonnel": {
+										"type": "string"
+									},
+									"emailInstitutionnel": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"nom",
+									"prenom",
+									"lieuNaissance",
+									"filiere",
+									"dateNaissance",
+									"telephone",
+									"sexe",
+									"cin",
+									"emailPersonnel",
+									"emailInstitutionnel"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+		},
+		"/private/SUPPRIMER_ETUDIANT/{id}": {
+			"delete": {
+				"summary": "Delete module !",
+				"operationId": "Supprimer_Etudiant",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Deleted with success !!"
+					},
+					"404": {
+						"description": "Id not found !!"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			}
+		},
+		"/private/MODIFIER_ETUDIANT/{id}": {
+			"put": {
+				"summary": "Up to date !",
+				"operationId": "Modifier_Etudiant",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"prenom": {
+										"type": "string"
+									},
+									"filiere": {
+										"type": "string"
+									},
+									"lieuNaissance": {
+										"type": "string"
+									},
+									"dateNaissance": {
+										"type": "string"
+									},
+									"sexe": {
+										"type": "string"
+									},
+									"telephone": {
+										"type": "string"
+									},
+									"cin": {
+										"type": "string"
+									},
+									"emailPersonnel": {
+										"type": "string"
+									},
+									"emailInstitutionnel": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "updated.",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					},
+					"405": {
+						"description": "Method Not Allowed",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					}
+				}
+			}
+		},
+
+		"/private/LISTER_MODULES": {
+			"get": {
+				"description": "all modules",
+				"operationId": "Lister_Modules",
+				"responses": {
+					"200": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/AJOUTER_MODULE": {
+			"post": {
+				"summary": "ADD a module!",
+				"operationId": "Ajouter_Module",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"departement": {
+										"type": "string"
+									},
+									"filiere": {
+										"type": "string"
+									},
+									"anneeScolaire": {
+										"type": "string"
+									},
+									"semester": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"nom",
+									"departement",
+									"filiere",
+									"anneeScolaire",
+									"semester"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+		},
+		"/private/SUPPRIMER_MODULE/{id}": {
+			"delete": {
+				"summary": "Delete module !",
+				"operationId": "Supprimer_Module",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Deleted with success !!"
+					},
+					"404": {
+						"description": "Id not found !!"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			}
+		},
+		"/private/MODIFIER_MODULE/{id}": {
+			"put": {
+				"summary": "Up to date !",
+				"operationId": "Modifier_Module",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"enseignant": {
+										"type": "string"
+									},
+									"coifficient": {
+										"type": "string"
+									},
+									"nbrHeure": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "updated.",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					},
+					"405": {
+						"description": "Method Not Allowed",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					}
+				}
+			}
+		},
+
+		"/private/LISTER_DEPARTEMENTS": {
+			"get": {
+				"description": "all departements",
+				"operationId": "Lister_Departements",
+				"responses": {
+					"200": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/AJOUTER_DEPARTEMENT": {
+			"post": {
+				"summary": "ADD a departement!",
+				"operationId": "Ajouter_Departement",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"responsable": {
+										"type": "string"
+									},
+									"emailInstitutionnel": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"nom",
+									"responsable",
+									"emailInstitutionnel"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+		},
+		"/private/SUPPRIMER_DEPARTEMENT/{id}": {
+			"delete": {
+				"summary": "Delete departement !",
+				"operationId": "Supprimer_Departement",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Deleted with success !!"
+					},
+					"404": {
+						"description": "Id not found !!"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			}
+		},
+		"/private/MODIFIER_DEPARTEMENT/{id}": {
+			"put": {
+				"summary": "Up to date !",
+				"operationId": "Modifier_Departement",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"responsable": {
+										"type": "string"
+									},
+									"emailInstitutionnel": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "updated.",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					},
+					"405": {
+						"description": "Method Not Allowed",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					}
+				}
+			}
+		},
+
+		"/private/LISTER_ELEMENTS": {
+			"get": {
+				"description": "all elements",
+				"operationId": "Lister_Elements",
+				"responses": {
+					"200": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/AJOUTER_ELEMENT": {
+			"post": {
+				"summary": "ADD a element!",
+				"operationId": "Ajouter_Element",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"coefficient": {
+										"type": "integer"
+									},
+									"nbrHeure": {
+										"type": "string"
+									},
+									"module": {
+										"type": "object",
+										"properties": {
+											"nom": {
+												"type": "string"
+											},
+											"description": {
+												"type": "string"
+											},
+											"responsable": {
+												"type": "string"
+											},
+											"departement": {
+												"type": "string"
+											},
+											"filiere": {
+												"type": "string"
+											},
+											"anneeScolaire": {
+												"type": "string"
+											},
+											"semester": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"required": [
+									"nom",
+									"description",
+									"coefficient",
+									"nbrHeure",
+									"module"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+		},
+		"/private/SUPPRIMER_ELEMENT/{id}": {
+			"delete": {
+				"summary": "Delete element !",
+				"operationId": "Supprimer_Element",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Deleted with success !!"
+					},
+					"404": {
+						"description": "Id not found !!"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			}
+		},
+		"/private/MODIFIER_ELEMENT/{id}": {
+			"put": {
+				"summary": "Up to date !",
+				"operationId": "Modifier_Element",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"coefficient": {
+										"type": "integer"
+									},
+									"nbrHeure": {
+										"type": "string"
+									},
+									"module": {
+										"type": "object",
+										"properties": {
+											"nom": {
+												"type": "string"
+											},
+											"description": {
+												"type": "string"
+											},
+											"responsable": {
+												"type": "string"
+											},
+											"departement": {
+												"type": "string"
+											},
+											"filiere": {
+												"type": "string"
+											},
+											"anneeScolaire": {
+												"type": "string"
+											},
+											"semester": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "updated.",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					},
+					"405": {
+						"description": "Method Not Allowed",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					}
+				}
+			}
+		},
+
+		"/private/LISTER_FILIERES": {
+			"get": {
+				"description": "all filieres",
+				"operationId": "Lister_Filieres",
+				"responses": {
+					"200": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/AJOUTER_FILIERE": {
+			"post": {
+				"summary": "ADD a filiere!",
+				"operationId": "Ajouter_Filiere",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"responsable": {
+										"type": "string"
+									},
+									"emailInstitutionnel": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"nom",
+									"responsable",
+									"emailInstitutionnel"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+		},
+		"/private/SUPPRIMER_FILIERE/{id}": {
+			"delete": {
+				"summary": "Delete filiere !",
+				"operationId": "Supprimer_Filiere",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Deleted with success !!"
+					},
+					"404": {
+						"description": "Id not found !!"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			}
+		},
+		"/private/MODIFIER_FILIERE/{id}": {
+			"put": {
+				"summary": "Up to date !",
+				"operationId": "Modifier_Filiere",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"responsable": {
+										"type": "string"
+									},
+									"emailInstitutionnel": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "updated.",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					},
+					"405": {
+						"description": "Method Not Allowed",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					}
+				}
+			}
+		},
+
+		"/private/SAISIE_NOTES": {
+			"post": {
+				"summary": "Saisir une note d'un element d'un module pour Filiere X!",
+				"operationId": "SAISIE_NOTES",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"notes": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"session": {
+													"type": "string"
+												},
+												"element": {
+													"type": "object",
+													"properties": {
+														"nom": {
+															"type": "string"
+														},
+														"description": {
+															"type": "string"
+														},
+														"coefficient": {
+															"type": "integer"
+														},
+														"nbrHeure": {
+															"type": "string"
+														},
+														"module": {
+															"type": "object",
+															"properties": {
+																"nom": {
+																	"type": "string"
+																},
+																"description": {
+																	"type": "string"
+																},
+																"responsable": {
+																	"type": "string"
+																},
+																"departement": {
+																	"type": "string"
+																},
+																"filiere": {
+																	"type": "string"
+																},
+																"anneeScolaire": {
+																	"type": "string"
+																},
+																"semester": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												},
+												"enseignant": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string"
+														},
+														"nom": {
+															"type": "string"
+														},
+														"prenom": {
+															"type": "string"
+														}
+													}
+												},
+												"etudiant": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string"
+														},
+														"nom": {
+															"type": "string"
+														},
+														"prenom": {
+															"type": "string"
+														},
+														"cin": {
+															"type": "string"
+														}
+													}
+												},
+												"note": {
+													"type": "integer"
+												},
+												"observation": {
+													"type": "string"
+												},
+												"date": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"required": [
+									"notes"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+		},
+		"/private/LISTER_NOTES": {
+			"post": {
+				"summary": "Lister lese note saisie par un enseignant X!",
+				"operationId": "LISTER_NOTES",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"enseignant": {
+										"type": "string"
+									},
+									"filiere": {
+										"type": "string"
+									},
+									"session": {
+										"type": "string"
+									},
+									"element": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"enseignant",
+									"filiere"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/SUPPRIMER_NOTE/{id}": {
+			"delete": {
+				"summary": "Delete module !",
+				"operationId": "SUPPRIMER_NOTE",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Deleted with success !!"
+					},
+					"404": {
+						"description": "Id not found !!"
+					},
+					"401": {
+						"description": "Unauthorized !!"
+					}
+				}
+			}
+		},
+		"/private/MODIFIER_NOTE/{id}": {
+			"put": {
+				"summary": "Up to date !",
+				"operationId": "MODIFIER_NOTE",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nom": {
+										"type": "string"
+									},
+									"prenom": {
+										"type": "string"
+									},
+									"filiere": {
+										"type": "string"
+									},
+									"lieuNaissance": {
+										"type": "string"
+									},
+									"dateNaissance": {
+										"type": "string"
+									},
+									"sexe": {
+										"type": "string"
+									},
+									"telephone": {
+										"type": "string"
+									},
+									"cin": {
+										"type": "string"
+									},
+									"emailPersonnel": {
+										"type": "string"
+									},
+									"emailInstitutionnel": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "updated.",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					},
+					"405": {
+						"description": "Method Not Allowed",
+						"content": {
+							"application/json": {},
+							"application/xml": {}
+						}
+					}
+				}
+			}
+		},
+
+		"/private/LISTER_MODULE_NOTE": {
+			"post": {
+				"summary": "Lister notes du filier!",
+				"operationId": "LISTER_MODULE_NOTE",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"query": {
+										"type": "object",
+										"properties": {
+
+										}
+									}
+								},
+								"required": [
+									"query"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/LISTER_NOTES_ADMIN": {
+			"post": {
+				"summary": "Lister notes du module X",
+				"operationId": "LISTER_NOTES_ADMIN",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"query": {
+										"type": "object",
+										"properties": {
+
+										}
+									}
+								},
+								"required": [
+									"query"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+		"/private/LISTER_NOTES_MODULE": {
+			"post": {
+				"summary": "Lister notes du module X",
+				"operationId": "LISTER_NOTES_MODULE",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"Module": {
+										"type": "string"
+									},
+									"session": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"Module"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+
+		"/private/GET_NOTE": {
+			"post": {
+				"summary": "Lister les notes du module X!",
+				"operationId": "GET_NOTE",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"filiere": {
+										"type": "string"
+									},
+									"module": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"module",
+									"filiere"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+
+		"/private/MODULE_BY_FILIERE": {
+			"post": {
+				"summary": "les Elements du FILIERE X",
+				"operationId": "Lister_Modules_By_Filiere",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"filiere": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"filiere"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+
+		"/private/ELEMENTS_BY_MODULE": {
+			"post": {
+				"summary": "les Elements du MODULE X",
+				"operationId": "Lister_Elements_By_Module",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"module": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"module"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+
+		"/private/STUDENT_BY_FILIERE": {
+			"post": {
+				"summary": "les Etudiants du FILIERE X",
+				"operationId": "Lister_Etudiant_By_Filiere",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"filiere": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"filiere"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+
+		"/private/ENSEIGNANT_BY_DEPARTEMENT": {
+			"post": {
+				"summary": "lister les enseignants du departement X",
+				"operationId": "Lister_Enseignant_By_Departement",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"query": {
+										"type": "object",
+										"properties": {
+
+										}
+									}
+								},
+								"required": [
+									"query"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+
+		"/private/DISTRIBUTOR": {
+			"post": {
+				"summary": "NOTE DISTRIBUTOR",
+				"operationId": "DISTRIBUTOR",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"notes": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {}
+										}
+									}
+								},
+								"required": [
+									"notes"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+
+		},
+
+		"/private/CHECK_IF_EXIST": {
+			"post": {
+				"summary": "CHECK MODULE X IF IS PROVED!",
+				"operationId": "CHECK_IF_EXIST",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"module": {
+										"type": "string"
+									},
+									"filiere": {
+										"type": "string"
+									},
+									"semester": {
+										"type": "string"
+									},
+									"session": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"module",
+									"filiere",
+									"semester",
+									"session"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+
+		"/private/MESSENGER_SEND": {
+			"post": {
+				"summary": "Envoyer un message !",
+				"operationId": "ENVOYER_MESSAGE",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"destinataire": {
+										"type": "string"
+									},
+									"expediteur": {
+										"type": "string"
+									},
+									"objet": {
+										"type": "string"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"destinataire",
+									"expediteur"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok"
+					}
+				}
+			}
+
+		},
+
+		"/private/MESSENGER_GET": {
+			"post": {
+				"summary": "Lister les messages !",
+				"operationId": "RECEVOIR_MESSAGE",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"user": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"user"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		},
+
+		"/private/NOTES_ETD_CTRL": {
+			"post": {
+				"summary": "Lister les messages !",
+				"operationId": "NOTES_ETD_CTRL",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+								},
+								"required": [
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "ok"
+					}
+				}
+			}
+		}
+
+	},
+
+	"components": {
+		"schemas": {
+			"EmptyObj": {
+				"type": "object",
+				"properties": {}
+			}
+		}
+	}
+}
